@@ -1,0 +1,23 @@
+services:
+  ingress-controller:
+    image: blackdocs/ingress-controller:latest-stable
+    ports:
+      - "80:80"
+      - "443:443"
+    mem_limit: "120m"
+    mem_reservation: "120m"
+    cpus: 0.1
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
+      app: "ingress-controller"     
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs:/etc/nginx/certs 
+    restart: always
+    networks:
+      - aws
+
+networks:
+  aws:
+    external: true
