@@ -86,6 +86,10 @@ server {
         proxy_redirect                          off;
 
     }
+    location = /robots.txt {
+        add_header Content-Type text/plain;
+        return 200 "User-agent: *\nDisallow: /recaptcha\nDisallow: /tag/\nSitemap: https://www.${first_part}\n";
+    }    
 }
 # END GENERATED CONFIG
 EOF
@@ -138,6 +142,10 @@ server {
         proxy_next_upstream_tries               3;
         proxy_redirect                          off;    
     }
+    location = /robots.txt {
+        add_header Content-Type text/plain;
+        return 200 "User-agent: *\nDisallow: /recaptcha\nDisallow: /tag/\nSitemap: https://${server_name}\n";
+    }     
 }
 # END GENERATED CONFIG
 EOF
@@ -221,6 +229,10 @@ server {
         proxy_next_upstream_tries               3;
         proxy_redirect                          off;
     }
+    location = /robots.txt {
+        add_header Content-Type text/plain;
+        return 200 "User-agent: *\nDisallow: /recaptcha\nDisallow: /tag/\nSitemap: https://${additional_non_www_ingress_host}\n";
+    }     
 }
 # END GENERATED CONFIG
 EOF
