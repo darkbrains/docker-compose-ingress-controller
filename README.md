@@ -99,5 +99,5 @@ This approach simplifies the management of NGINX configurations, making it a val
 You can also pull the Docker image directly from Docker Hub using the following command:
 
 ```bash
-docker pull docker.io/blackdocs/ingress-controller:latest-stable
+docker pull docker.io/darkbrains/ingress-controller:latest-stable
 ```
